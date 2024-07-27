@@ -1,0 +1,147 @@
+.product-page {
+  grid-area: cont;
+  color: var(--dark1);
+  background-color: var(--light1);
+  position: relative;
+  padding: 10px;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-areas: "pic data ";
+  column-gap: 5%;
+  min-height: 500px;
+}
+@media screen and (max-width: 850px) {
+  .product-page {
+    gap: 0;
+    grid-template-columns: 4fr 2fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "pic pic "
+      "data data";     
+  }
+}
+.container {
+  display: flex;
+  margin: auto;
+  grid-area: pic;
+}
+.container img {
+  border-radius: inherit;
+  max-width: 100%;
+  max-height: 400px;
+}
+.product-data {
+  grid-area: data;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: auto;
+}
+.product-data > * {
+  margin: 10px;
+}
+.product-data > h1 {
+  font-family: inherit;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+}
+.old-price {
+  bottom: 5px;
+  left: 25%;
+}
+.cart-button {
+  font-size: var(--FS-small);
+	position: relative;
+	height: 42px;
+}
+.cart-button:active {
+	transform: scale(.9);
+}
+.cart-button .fa-shopping-cart {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: -10%;
+	font-size: 2em;
+	transform: translate(-50%,-50%);
+}
+.cart-button .fa-box {
+	position: absolute;
+	z-index: 3;
+	top: -20%;
+	left: 52%;
+	font-size: 1.2em;
+	transform: translate(-50%,-50%);
+}
+.cart-button span {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+	font-size: 1.2em;
+	color: #fff;
+	transform: translate(-50%,-50%);
+	white-space: nowrap;
+}
+.cart-button span.add-to-cart {
+	opacity: 1;
+}
+.cart-button span.added {
+	opacity: 0;
+}
+.cart-button.clicked .fa-shopping-cart {
+	animation: cart 1.25s ease-in-out forwards;
+}
+.cart-button.clicked .fa-box {
+	animation: box 1.25s ease-in-out forwards;
+}
+.cart-button.clicked span.add-to-cart {
+	animation: txt1 1.25s ease-in-out forwards;
+}
+.cart-button.clicked span.added {
+	animation: txt2 1.25s ease-in-out forwards;
+}
+@keyframes cart {
+	0% {
+		left: -10%;
+	}
+	40%, 60% {
+		left: 50%;
+	}
+	100% {
+		left: 110%;
+	}
+}
+@keyframes box {
+	0%, 40% {
+		top: -20%;
+	}
+	60% {
+		top: 40%;
+		left: 52%;
+	}
+	100% {
+		top: 40%;
+		left: 112%;
+	}
+}
+@keyframes txt1 {
+	0% {
+		opacity: 1;
+	}
+	20%, 100% {
+		opacity: 0;
+	}
+}
+@keyframes txt2 {
+	0%, 80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

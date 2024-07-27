@@ -1,0 +1,263 @@
+body {
+  grid-template-areas:
+    "header header header header header header header header"
+    "nav nav nav nav nav nav nav nav"
+    "filter cont cont cont cont cont cont ad"
+    "footer footer footer footer footer footer footer footer";
+}
+
+.empty {
+  font-size: var(--FS-big);
+  grid-area: cont;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 5px;
+  min-height: 70dvh;
+}
+
+.empty > a {
+  text-decoration: underline;
+  height: initial;
+}
+
+.empty h1 {
+  font-size: var(--FS-big);
+}
+
+.empty h4 {
+  font-size: var(--FS-mid);
+}
+
+h4 > sub > img {
+  width: 20px;
+}
+
+.empty > img {
+  width: 100%;
+  max-height: 425px;
+  max-width: 425px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+}
+
+.cart-view {
+  grid-area: cont;
+  min-height: 64dvh;
+}
+
+.cart-item .image {
+  flex-basis: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 255px;
+  height: 224px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.cart-item > * {
+  font-size: clamp(14px, 3vw, 18px);
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 80%;
+  border-radius: 0.3rem;
+}
+
+.cart-item {
+  position: relative;
+  background-color: var(--light2);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensure all items are centered vertically */
+  padding: 10px;
+  margin: 10px;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.cart-item div:nth-child(2) {
+  flex-basis: 70%;
+  text-align: center; /* Center text horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text vertically */
+  align-items: center; /* Center text horizontally */
+}
+
+@media screen and (max-width: 450px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image img {
+    max-height: 200px;
+  }
+}
+
+.chd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  grid-area: check;
+}
+
+.chd div {
+  display: flex;
+  width: 100%;
+  height: auto;
+  gap: 25px;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px 0px;
+  border-radius: 0.5rem;
+  padding: 10px;
+}
+
+.chd div h3 {
+  font-size: x-large;
+  padding-left: 3px;
+  padding-top: 2px;
+}
+
+.delete {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  color: var(--dark1);
+  background-color: var(--light1);
+  width: 32px;
+  height: 32px;
+  padding: 6.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete:hover {
+  background-color: rgb(209 76 76 / 86%);
+}
+
+.checkout {
+  border-radius: 0.5rem;
+  font-size: 23px;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  padding: 16px 20px 16px 15px;
+  height: 56px;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  justify-content: center;
+}
+
+#cart {
+  margin-right: 12px;
+  transform-origin: 20% 100%;
+  opacity: 1;
+}
+
+@keyframes slide-up-fade {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+
+@keyframes roll-out {
+  0% {
+    transform: translate(0) rotate(0);
+  }
+  20% {
+    transform: translate(0) rotate(-70deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(140px) rotate(-47deg);
+    opacity: 0;
+  }
+}
+
+.checked-out .chh {
+  animation: slide-up-fade 150ms 1;
+  animation-fill-mode: both;
+}
+
+.checked-out #cart {
+  animation: roll-out 1s 1 150ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+@keyframes checkmark {
+  from {
+    stroke-dashoffset: 26px;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+#check {
+  position: absolute;
+  left: calc(50% - 17px);
+}
+
+#check path {
+  stroke-dasharray: 26px;
+  stroke-dashoffset: 26px;
+}
+
+.checked-out #check path {
+  animation: checkmark 150ms 1 1150ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+.checked-out .checkout {
+  background-color: #20bf6b;
+  transition-delay: 1150ms;
+}
+.increment-quantity,
+.decrement-quantity {
+    font-size: 12px; /* Smaller font size */
+    padding: 2px 5px; /* Smaller padding */
+    width: 25px; /* Smaller width */
+    height: 25px; /* Smaller height */
+    border: none; /* No border */
+    border-radius: 3px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.increment-quantity:disabled,
+.decrement-quantity:disabled {
+    background-color: #bbb; /* Gray background for disabled state */
+    cursor: not-allowed; /* Not-allowed cursor for disabled state */
+}

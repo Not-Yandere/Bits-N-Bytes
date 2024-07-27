@@ -1,0 +1,693 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Quicksand:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400&display=swap");
+
+/* Variables */
+:root {
+    --dark1: #1D3557;
+    --dark2: #457B9D;
+    --light2: #A8DADC;
+    --light1: #F1FAEE;
+    --FS-big: clamp(1.5rem, 2vw, 2.5rem);
+    --FS-mid: clamp(1.2rem, 1.5vw, 2rem);
+    --FS-small: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Global styles */
+body {
+    background-color: var(--light1);
+    color: var(--dark1);
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: var(--dark1);
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--dark2);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Form styles */
+form {
+    background-color: var(--light1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    color: var(--dark1);
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--dark2);
+}
+
+/* Button styles */
+form button, .add-item-button, .cancel-button, .edit-button, .action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: var(--dark2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--FS-small);
+    text-align: center;
+}
+
+form button:hover, .add-item-button:hover, .cancel-button:hover, .edit-button:hover, .action-button:hover {
+    background-color: var(--dark1);
+}
+
+/* Empty message styles */
+.empty {
+    text-align: center;
+    color: var(--dark1);
+    margin-top: 50px;
+}
+
+.empty h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.empty a {
+    text-decoration: none;
+    color: var(--dark2);
+    font-size: 1.2em;
+}
+
+.empty a:hover {
+    text-decoration: underline;
+}
+
+.add-item-button {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+}
+
+header h1 {
+    font-family: "Pixelify Sans";
+    transition: color 1s ease-out;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--dark1);
+    display: inline-block;
+    height: 100%;
+    transition: color 1s ease-out;
+}
+
+header h1 a:hover {
+    color: var(--dark2);
+}
+
+.welcome-message {
+    font-size: 1.5rem; /* Adjusted font size for the welcome message */
+    color: var(--dark1);
+    margin: 0 0 0 auto; /* Align to the right */
+}
+
+.dashboard-title {
+    font-size: 2rem; /* Adjust the size of the "Admin Dashboard" */
+    color: var(--dark1);
+    margin-right: auto; /* Align to the left */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--dark1);
+    background-color: var(--light2);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: var(--dark2);
+    color: var(--light1);
+}
+
+.pagination a.active {
+    background-color: var(--dark1);
+    color: var(--light1);
+}
+
+.actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add margin between the buttons */
+    height: 100%;
+}
+
+.inline-form {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+}
+
+.inline-form button {
+    width: 100%;
+}
+
+.remove-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: red;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: block;
+    font-size: var(--FS-small);
+    margin: 0; /* Adjust margin as needed */
+    box-shadow: none; /* Remove box shadow */
+}
+
+.remove-button:hover {
+    background-color: darkred;
+}
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Quicksand:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400&display=swap");
+
+/* Variables */
+:root {
+    --dark1: #1D3557;
+    --dark2: #457B9D;
+    --light2: #A8DADC;
+    --light1: #F1FAEE;
+    --FS-big: clamp(1.5rem, 2vw, 2.5rem);
+    --FS-mid: clamp(1.2rem, 1.5vw, 2rem);
+    --FS-small: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Global styles */
+body {
+    background-color: var(--light1);
+    color: var(--dark1);
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: var(--dark1);
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--dark2);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Form styles */
+form {
+    background-color: var(--light1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    color: var(--dark1);
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--dark2);
+}
+
+/* Button styles */
+form button, .add-item-button, .cancel-button, .edit-button, .action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: var(--dark2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--FS-small);
+    text-align: center;
+}
+
+form button:hover, .add-item-button:hover, .cancel-button:hover, .edit-button:hover, .action-button:hover {
+    background-color: var(--dark1);
+}
+
+/* Empty message styles */
+.empty {
+    text-align: center;
+    color: var(--dark1);
+    margin-top: 50px;
+}
+
+.empty h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.empty a {
+    text-decoration: none;
+    color: var(--dark2);
+    font-size: 1.2em;
+}
+
+.empty a:hover {
+    text-decoration: underline;
+}
+
+.add-item-button {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+}
+
+header h1 {
+    font-family: "Pixelify Sans";
+    transition: color 1s ease-out;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--dark1);
+    display: inline-block;
+    height: 100%;
+    transition: color 1s ease-out;
+}
+
+header h1 a:hover {
+    color: var(--dark2);
+}
+
+.welcome-message {
+    font-size: 1.5rem; /* Adjusted font size for the welcome message */
+    color: var(--dark1);
+    margin: 0 0 0 auto; /* Align to the right */
+}
+
+.dashboard-title {
+    font-size: 2rem; /* Adjust the size of the "Admin Dashboard" */
+    color: var(--dark1);
+    margin-right: auto; /* Align to the left */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--dark1);
+    background-color: var(--light2);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: var(--dark2);
+    color: var(--light1);
+}
+
+.pagination a.active {
+    background-color: var(--dark1);
+    color: var(--light1);
+}
+
+.actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add margin between the buttons */
+    height: 100%;
+}
+
+.inline-form {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+}
+
+.inline-form button {
+    width: 100%;
+}
+
+.remove-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: red;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: block;
+    font-size: var(--FS-small);
+    margin: 0; /* Adjust margin as needed */
+    box-shadow: none; /* Remove box shadow */
+}
+
+.remove-button:hover {
+    background-color: darkred;
+}
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Quicksand:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400&display=swap");
+
+/* Variables */
+:root {
+    --dark1: #1D3557;
+    --dark2: #457B9D;
+    --light2: #A8DADC;
+    --light1: #F1FAEE;
+    --FS-big: clamp(1.5rem, 2vw, 2.5rem);
+    --FS-mid: clamp(1.2rem, 1.5vw, 2rem);
+    --FS-small: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Global styles */
+body {
+    background-color: var(--light1);
+    color: var(--dark1);
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: var(--dark1);
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--dark2);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Form styles */
+form {
+    background-color: var(--light1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    color: var(--dark1);
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--dark2);
+}
+
+/* Button styles */
+form button, .add-item-button, .cancel-button, .edit-button, .action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: var(--dark2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--FS-small);
+    text-align: center;
+}
+
+form button:hover, .add-item-button:hover, .cancel-button:hover, .edit-button:hover, .action-button:hover {
+    background-color: var(--dark1);
+}
+
+/* Empty message styles */
+.empty {
+    text-align: center;
+    color: var(--dark1);
+    margin-top: 50px;
+}
+
+.empty h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.empty a {
+    text-decoration: none;
+    color: var(--dark2);
+    font-size: 1.2em;
+}
+
+.empty a:hover {
+    text-decoration: underline;
+}
+
+.add-item-button {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+}
+
+header h1 {
+    font-family: "Pixelify Sans";
+    transition: color 1s ease-out;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--dark1);
+    display: inline-block;
+    height: 100%;
+    transition: color 1s ease-out;
+}
+
+header h1 a:hover {
+    color: var(--dark2);
+}
+
+.welcome-message {
+    font-size: 1.5rem; /* Adjusted font size for the welcome message */
+    color: var(--dark1);
+    margin: 0 0 0 auto; /* Align to the right */
+}
+
+.dashboard-title {
+    font-size: 2rem; /* Adjust the size of the "Admin Dashboard" */
+    color: var(--dark1);
+    margin-right: auto; /* Align to the left */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--dark1);
+    background-color: var(--light2);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: var(--dark2);
+    color: var(--light1);
+}
+
+.pagination a.active {
+    background-color: var(--dark1);
+    color: var(--light1);
+}
+
+.actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add margin between the buttons */
+    height: 100%;
+}
+
+.inline-form {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+}
+
+.inline-form button {
+    width: 100%;
+}
+
+.remove-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--light1);
+    background-color: red;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: block;
+    font-size: var(--FS-small);
+    margin: 0; /* Adjust margin as needed */
+    box-shadow: none; /* Remove box shadow */
+}
+
+.remove-button:hover {
+    background-color: darkred;
+}

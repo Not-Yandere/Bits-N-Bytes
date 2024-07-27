@@ -1,0 +1,59 @@
+RewriteEngine On
+
+# Allow access to static resources
+RewriteCond %{REQUEST_URI} !^/CSS/
+RewriteCond %{REQUEST_URI} !^/Images/
+RewriteCond %{REQUEST_URI} !^/products/
+
+# Handle URL rewriting for product with ItemId
+RewriteRule ^hardware/product/([0-9]+)$ hardware/product1.php?ItemId=$1 [L]
+RewriteRule ^reset-password/([a-zA-Z0-9]+)$ reset-password.php?token=$1 [L]
+
+# Other rewrite rules
+RewriteRule ^games$ games.php [L]
+RewriteRule ^cart$ cart.php [L]
+RewriteRule ^sign-up$ sign-up.php [L]
+RewriteRule ^log-in$ log-in.php [L]
+RewriteRule ^checkout$ checkout.php [L]
+RewriteRule ^accessories$ accessories.php [L]
+RewriteRule ^consoles$ consoles.php [L]
+RewriteRule ^Hardware$ Hardware.php [L]
+RewriteRule ^phones$ phones.php [L]
+RewriteRule ^monitors$ monitors.php [L]
+RewriteRule ^laptops$ laptops.php [L]
+RewriteRule ^forgot-password$ forgot-password.php [L]
+RewriteRule ^reset-password$ reset-password.php [L]
+RewriteRule ^verify-otp$ verify-otp.php [L]
+RewriteRule ^checkout_success$ checkout_success.php [L]
+RewriteRule ^add-cart$ add-cart.php [L]
+RewriteRule ^remove_item$ remove_item.php [L]
+RewriteRule ^logout_func$ logout_func.php [L]
+RewriteRule ^header1$ hardware/header1.php [L]
+RewriteRule ^search$ search.php [L]
+RewriteRule ^search/page=([0-9]+)$ ajax_search.php?page=$1 [L]
+
+# New pages for admin dashboard
+RewriteRule ^admin-in$ admin-dashboard/admin-in.php [L]
+RewriteRule ^dashboard$ admin-dashboard/dashboard.php [L]
+RewriteRule ^add-item$ admin-dashboard/add-item.php [L]
+RewriteRule ^edit-item/([0-9]+)$ admin-dashboard/edit-item.php?id=$1 [L]
+
+# for legal stuff
+RewriteRule ^terms-of-service$ terms-of-service.php [L]
+RewriteRule ^privacy-policy$ privacy-policy.php [L]
+
+# Default rule
+RewriteRule ^$ index.php [L]
+
+# 404 error handling
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . 404.php [L]
+ErrorDocument 403 /404
+ErrorDocument 404 /404
+ErrorDocument 500 /404
+
+<Files "visitor.txt">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
