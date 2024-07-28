@@ -1,7 +1,11 @@
 <?php include 'session_check.php';
 $isUserLoggedIn = isset($_SESSION['user']); ?>
 <body>
-<?php include 'cookie-consent.php'; ?>
+
+<?php
+include 'additional-details-form.php'; 
+include 'cookie-consent.php'; 
+?>
 <header>
       <h1><a href="/">Bits N Bytes</a></h1>
       <div class="search">
