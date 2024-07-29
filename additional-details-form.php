@@ -1,6 +1,4 @@
 <?php
-// Ensure this file is included in the header.php where necessary
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Start the session if not already started
     if (session_status() == PHP_SESSION_NONE) {
@@ -219,7 +217,6 @@ function validateProfileForm() {
                 }
             }
         })
-        .catch(error => console.error('Error:', error));
     }
 
     return false; // Prevent form submission
@@ -233,7 +230,6 @@ function checkUserDetails() {
                 document.getElementById('profilePopup').style.display = 'flex';
             }
         })
-        .catch(error => console.error('Error:', error));
 }
 
 function showSuccessMessage() {

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeCart();
     }
 });
+
 // Initialize cart with consistent data structure
 function initializeCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -34,8 +35,8 @@ function removeFromCart(itemId) {
     if (itemElement) {
         itemElement.style.animation = "fadeOut 0.5s ease-out forwards";
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(item => item.id !== itemId);
-            localStorage.setItem('cart', JSON.stringify(cart));
+        cart = cart.filter(item => item.id !== itemId);
+        localStorage.setItem('cart', JSON.stringify(cart));
         setTimeout(function () {
             updateCartDisplay();
         }, 550);
@@ -198,29 +199,58 @@ function setGridTemplate(cart, screenSize) {
     }
 }
 
-// Checkout function
-
-function checkout() {
-    setTimeout(function () {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    $.ajax({
-        url: 'checkout.php',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ cart: cart }),
-        success: function(response) {
-            // Handle successful checkout
-            if (response.status === 'success') {
-                localStorage.removeItem('cart');
-                window.location.href = 'checkout_success.php'; 
+// Function to check user details before proceeding with checkout
+function checkUserDetailsBeforeCheckout() {
+    return fetch('check-user-details.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'incomplete') {
+                document.getElementById('profilePopup').style.display = 'flex';
+                return false;
             }
-        },
-        error: function(error) {
-            // Handle checkout error
-            console.error('Checkout failed:', error);
-        }
-    })},2500);
+            return true;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            return false;
+        });
 }
+
+// Checkout function
+function checkout() {
+    checkUserDetailsBeforeCheckout().then(isComplete => {
+        if (!isComplete) {
+            return; // Stop the checkout process if user details are incomplete
+        }
+
+        // Toggle the checked-out class
+        document.documentElement.classList.toggle('checked-out');
+
+        setTimeout(function () {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            $.ajax({
+                url: 'checkout.php',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ cart: cart }),
+                success: function(response) {
+                    if (response.status === 'success') {
+                        localStorage.removeItem('cart');
+                        window.location.href = 'checkout_success.php'; 
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(error) {
+                    console.error('Checkout failed:', error);
+                }
+            });
+        }, 2500);
+    });
+}
+
+// Add event listener to the checkout button
+document.querySelector('.checkout').addEventListener('click', checkout);
 
 // Initialize cart with consistent data structure and display on page load
 document.addEventListener('DOMContentLoaded', initializeCart);

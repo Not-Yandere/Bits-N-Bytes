@@ -31,12 +31,6 @@ $isUserLoggedIn = isset($_SESSION['user']);
                     <path stroke-width="2" fill="none" stroke="#ffffff" d="M 3,12 l 6,6 l 12, -12"/>
                 </svg>
             </button>
-            <script>
-                const btn = document.querySelector('.checkout');
-                btn.addEventListener('click', () => {
-                    document.documentElement.classList.toggle('checked-out');
-                });
-            </script>
         </div>
     </div>
     <aside class="ad"></aside>

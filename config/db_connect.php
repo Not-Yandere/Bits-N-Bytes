@@ -27,7 +27,7 @@ if (isset($_COOKIE['remember_me'])) {
     $token = $_COOKIE['remember_me'];
 
     // Query to validate the token and check its expiration
-    $query = "SELECT user, login_token_expiration FROM bnb WHERE login_token = ? AND login_token_expiration > NOW()";
+    $query = "SELECT user, id, login_token_expiration FROM bnb WHERE login_token = ? AND login_token_expiration > NOW()";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, 's', $token);
     mysqli_stmt_execute($stmt);
@@ -37,6 +37,7 @@ if (isset($_COOKIE['remember_me'])) {
         // Restore the session if the token is valid and not already set
         if (!isset($_SESSION['user'])) {
             $_SESSION['user'] = $row['user'];
+            $_SESSION['id'] = $row['id'];
         }
 
         // Extend the expiration date by another 7 days if more than 1 day has passed since last update
@@ -62,24 +63,26 @@ if (isset($_COOKIE['remember_me'])) {
 }
 
 // Existing logic to update IDs in the bnb table
-$result = mysqli_query($conn,"SELECT id FROM bnb ORDER BY id");
-if ($result){
+$result = mysqli_query($conn, "SELECT id FROM bnb ORDER BY id");
+if ($result) {
     $newId = 1;
-    while ($row = mysqli_fetch_assoc($result)){
+    while ($row = mysqli_fetch_assoc($result)) {
         $currentId = $row['id'];
         if ($currentId != $newId) {
-            mysqli_query($conn,"UPDATE bnb SET id = $newId WHERE id = $currentId");
+            mysqli_query($conn, "UPDATE bnb SET id = $newId WHERE id = $currentId");
         }
         $newId++;
     }
 }
-$result = mysqli_query($conn,"SELECT ItemId FROM items ORDER BY ItemId");
-if ($result){
+mysqli_free_result($result);
+
+$result = mysqli_query($conn, "SELECT ItemId FROM items ORDER BY ItemId");
+if ($result) {
     $newId = 1;
-    while ($row = mysqli_fetch_assoc($result)){
+    while ($row = mysqli_fetch_assoc($result)) {
         $currentId = $row['ItemId'];
         if ($currentId != $newId) {
-            mysqli_query($conn,"UPDATE items SET ItemId = $newId WHERE ItemId = $currentId");
+            mysqli_query($conn, "UPDATE items SET ItemId = $newId WHERE ItemId = $currentId");
         }
         $newId++;
     }
