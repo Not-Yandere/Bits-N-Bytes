@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'config/db_connect.php';
 
 // If the user is logged in, clear the remember me token
