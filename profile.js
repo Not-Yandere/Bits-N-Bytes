@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const passwordError = document.getElementById('password-error-unique');
             passwordError.innerHTML = "Password must meet the requirements.";
             passwordError.style.display = "block";
-            console.log("Password Error:", passwordError.innerHTML); // Debugging line
             return false;
         }
 
@@ -142,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const passwordError = document.getElementById('password-error-unique');
             passwordError.innerHTML = "Passwords do not match.";
             passwordError.style.display = "block";
-            console.log("Password Error:", passwordError.innerHTML); // Debugging line
             return false;
         }
 
@@ -228,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validate Profile Form
     window.validateProfileFormUnique = function() {
-        console.log("Validating profile form..."); // Debugging line
         let isValid = true;
         const fullName = document.getElementById("full_name_unique").value.trim();
         const country = document.getElementById("country_unique").value;
@@ -244,14 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const zipCodeError = document.getElementById("error-zip_code-unique");
         const phoneError = document.getElementById("error-phone-unique");
 
-        // Log elements for debugging
-        console.log("fullNameError:", fullNameError);
-        console.log("countryError:", countryError);
-        console.log("cityError:", cityError);
-        console.log("addressError:", addressError);
-        console.log("zipCodeError:", zipCodeError);
-        console.log("phoneError:", phoneError);
-
         // Reset error messages
         fullNameError.style.display = "none";
         countryError.style.display = "none";
@@ -263,28 +252,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (fullName === "" || !/^[a-zA-Z\s]{2,50}$/.test(fullName)) {
             fullNameError.innerHTML = "Please enter a valid full name.";
             fullNameError.style.display = "block";
-            console.log("Full Name Error:", fullNameError.innerHTML); // Debugging line
             isValid = false;
         }
 
         if (country === "") {
             countryError.innerHTML = "Please select a country.";
             countryError.style.display = "block";
-            console.log("Country Error:", countryError.innerHTML); // Debugging line
             isValid = false;
         }
 
         if (city === "") {
             cityError.innerHTML = "Please select a city.";
             cityError.style.display = "block";
-            console.log("City Error:", cityError.innerHTML); // Debugging line
             isValid = false;
         }
 
         if (address === "" || !/^[a-zA-Z0-9\s,'.-]+$/.test(address)) {
             addressError.innerHTML = "Please enter a valid address.";
             addressError.style.display = "block";
-            console.log("Address Error:", addressError.innerHTML); // Debugging line
             isValid = false;
         }
 
@@ -292,18 +277,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedCountryData && !new RegExp(selectedCountryData.zipRegex).test(zipCode)) {
             zipCodeError.innerHTML = "Please enter a valid zip code.";
             zipCodeError.style.display = "block";
-            console.log("ZIP Code Error:", zipCodeError.innerHTML); // Debugging line
             isValid = false;
         }
 
         if (!/^01[0-2]\d{8}$/.test(phone)) {
             phoneError.innerHTML = "Please enter a valid phone number.";
             phoneError.style.display = "block";
-            console.log("Phone Error:", phoneError.innerHTML); // Debugging line
             isValid = false;
         }
 
-        console.log("Is form valid?", isValid); // Debugging line
         if (!isValid) {
             return false; // Prevent form submission
         }
