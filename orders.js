@@ -13,7 +13,7 @@ function loadOrders() {
             if (Array.isArray(data) && data.length > 0) {
                 displayOrders(data);
             } else {
-                document.querySelector('.orders-view').innerHTML = '<h2>No orders found.</h2>';
+                document.querySelector('.orders-view').innerHTML = '<div class="empty"><b>No orders found.</b><br><a href="/">Shop now</a></div>';
             }
         })
         .catch(error => {

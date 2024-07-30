@@ -1,0 +1,279 @@
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px; /* Adjusted for consistency */
+    grid-area: cont;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--dark2);
+    border-radius: 5px;
+    background-color: var(--light1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h3 {
+    margin-bottom: 20px;
+    font-size: var(--FS-big);
+    color: var(--dark1);
+}
+
+.profile-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: var(--FS-small);
+    color: var(--dark2);
+}
+
+.profile-section input , select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--dark2);
+    border-radius: 5px;
+    font-size: var(--FS-mid);
+}
+
+.profile-section button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--dark1);
+    color: var(--light1);
+    font-size: var(--FS-mid);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile-section button:hover {
+    background-color: var(--dark2);
+}
+
+.modal {
+    display: none; /* Ensure modal is hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.otp-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.otp-input-unique {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--dark2);
+    border-radius: 5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100px); }
+    to { transform: translateY(0); }
+}
+
+/* Change Password Popup */
+#changePasswordPopupUnique {
+    display: none; /* Ensure the modal is hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: rgba(241, 250, 238, 0.9);
+    padding: 45px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    animation: slideIn 0.5s;
+    position: relative;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #1d3557;
+}
+
+#changePasswordPopupUnique form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#changePasswordPopupUnique label {
+    text-align: left;
+    font-size: 1em;
+    color: #1d3557;
+}
+
+#changePasswordPopupUnique input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1em;
+}
+#changePasswordPopupUnique .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+#changePasswordPopupUnique .close-button:hover,
+#changePasswordPopupUnique .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-section button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.profile-section button:disabled:hover {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.success-message, .failure-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1faee;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.failure-message {
+    background-color: #ffe6e6;
+}
+
+.checkmark-wrapper, .cross-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark, .cross {
+    width: 72px;
+    height: 72px;
+    stroke-width: 2;
+    fill: none;
+    animation: checkmark 0.5s ease-in-out forwards, circle 0.5s ease-in-out forwards;
+}
+
+.checkmark {
+    stroke: #4caf50;
+}
+
+.cross {
+    stroke: #f44336;
+}
+
+@keyframes checkmark {
+    0% {
+        stroke-dasharray: 0, 51;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 51, 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes circle {
+    0% {
+        stroke-dasharray: 0, 157;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 157, 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+#failureOkButtonUnique {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f44336;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#failureOkButtonUnique:hover {
+    background-color: #d32f2f;
+}
+.unique-error-message {
+    color: red;
+    font-size: 1em; /* Reduced font size */
+    margin-bottom: 10px;
+    display: none; /* Initially hidden */
+    text-align: left;
+  }
+  

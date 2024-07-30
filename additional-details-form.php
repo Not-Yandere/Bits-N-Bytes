@@ -1,4 +1,7 @@
 <?php
+if ($_SERVER['REQUEST_URI'] === '/profile') {
+    exit(); // Exit the script if on the /profile page
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Start the session if not already started
     if (session_status() == PHP_SESSION_NONE) {
@@ -112,6 +115,11 @@ let data = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if the current URL is /profile.php
+    if (window.location.pathname === '/profile.php') {
+        return; // Exit the script if on the /profile.php page
+    }
+
     setTimeout(() => {
         checkUserDetails();
     }, 10000);

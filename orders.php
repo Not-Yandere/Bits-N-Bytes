@@ -10,6 +10,7 @@ $isUserLoggedIn = isset($_SESSION['user']);
     <title>Bits N Bytes - Orders</title>
     <link rel="stylesheet" href="/CSS/amazon.css" />
     <link rel="stylesheet" href="/CSS/orders.css" /> <!-- Include the new CSS file -->
+    <link rel="stylesheet" href="/CSS/carttt.css" />
     <link rel="shortcut icon" href="/Images/icon.png">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>var isUserLoggedIn = <?php echo json_encode($isUserLoggedIn); ?>;</script>
