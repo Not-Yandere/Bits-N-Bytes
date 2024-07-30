@@ -36,70 +36,12 @@ To set up the project locally, follow these steps:
 
 3. **Configure the environment**:
     - Create a `.env` file in the /config directory.
-    - Add your database configuration details in the `.env` file.
+    - Add your database configuration details and the smtp details in the `.env` file.
 
 4. **Run the project**:
     - Start your local server (e.g., XAMPP, WAMP).
     - Navigate to the project directory and open `index.php` in your browser.
 
-## Folder Structure
-
-- `/admin-dashboard`: Contains admin-related pages for adding, editing, and managing products.
-    - `add-item.php`: Add a new product.
-    - `admin-in.php`: Admin login page.
-    - `dashboard.php`: Admin dashboard.
-    - `edit-item.php`: Edit an existing product.
-    - `valide-admin-in.php`: Validate admin login.
-- `/config`: Contains the database configuration files.
-    - `db_connect.php`: Database connection script.
-    - `.env`: Environment configuration file (create it and add your db credentials).
-- `/CSS`: Contains CSS files for styling the website.
-    - `amazon.css`
-    - `carttt.css`
-    - `dashboard.css`
-    - `log--in.css`
-    - `product.css`
-- `/data`: Contains data files.
-    - `visitor.txt`: Log file for visitors. (don't worry the directory and the file is created when the first user visit the website.)
-- `/hardware`: Contains a seperate page for products view.
-    - `header1.php`
-    - `product1.php`
-- `/Images`: Contains product images and icons used in design of website.
-- `/PHPMailer`: Contains PHPMailer library for sending emails.
-- `/products`: Contains product images and user uploads.
-- `.htaccess`: Apache configuration file.
-- `404.php`: Custom 404 error page.
-- `accessories.php`: Accessories page.
-- `ajax_search.php`: AJAX search functionality.
-- `cart.php`: Cart page.
-- `cart.js`: JavaScript file for cart functionality.
-- `checkout.php`: Checkout page.
-- `checkout_success.php`: Checkout success page.
-- `consoles.php`: Consoles page.
-- `cookie-consent.php`: Cookie consent management.
-- `database.sql`: SQL file for setting up the database.
-- `forgot-password.php`: Forgot password page.
-- `games.php`: Games page.
-- `get-products.php`: Script to fetch products.
-- `Hardware.php`: Hardware products page.
-- `header.php`: Common header file.
-- `index.php`: Home page.
-- `laptops.php`: Laptops page.
-- `log-in.php`: Login page.
-- `logout_func.php`: Logout functionality.
-- `menu.js`: JavaScript file for menu functionality.
-- `monitors.php`: Monitors page.
-- `phones.php`: Phones page.
-- `privacy-policy.php`: Privacy policy page.
-- `reset-password.php`: Reset password page.
-- `search.php`: Search functionality.
-- `session_check.php`: Session check script.
-- `sign-up.php`: Signup page.
-- `terms-of-service.php`: Terms of service page.
-- `validation.js`: JavaScript file for client-side validation.
-- `valide-in.php`: Validation script for login.
-- `valide-up.php`: Validation script for signup.
-- `verify-otp.php`: Verify OTP page.
 
 ## Contributing
 
