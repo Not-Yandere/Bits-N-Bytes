@@ -93,7 +93,7 @@ $conn->close();
         <!-- Order History Section -->
         <div class="profile-section">
             <h3>Order History</h3>
-            <button onclick="window.location.href='orders.php'">View Order History</button>
+            <button onclick="window.location.href='/orders'">View Order History</button>
         </div>
 
         <!-- Password Change Popup -->

@@ -45,6 +45,13 @@ RewriteRule ^privacy-policy$ privacy-policy.php [L]
 # Default rule
 RewriteRule ^$ index.php [L]
 
+#new stuff idk XD i am so done with this website 
+RewriteRule ^profile$ profile.php [L]
+RewriteRule ^orders$ orders.php [L]
+
+
+
+
 # 404 error handling
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . 404.php [L]
