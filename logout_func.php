@@ -20,7 +20,10 @@ if (isset($_COOKIE['remember_me'])) {
 session_unset();
 session_destroy();
 
-// Redirect to index page
-header("Location: /");
+// Clear the cart from local storage
+echo "<script>
+    localStorage.removeItem('cart');
+    window.location.href = '/';
+</script>";
 exit();
 ?>
