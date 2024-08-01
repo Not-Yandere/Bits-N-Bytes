@@ -1,24 +1,29 @@
 <?php include 'session_check.php';
 include 'config/db_connect.php';
-$isUserLoggedIn = isset($_SESSION['user']); ?>
+$isUserLoggedIn = isset($_SESSION['user']); 
+$user_status = isset($_SESSION['user_status']) ? $_SESSION['user_status'] : '';
+$requested_uri = $_SERVER['REQUEST_URI'];
+$current_page = basename($_SERVER['PHP_SELF']);
+?>
+
 <body>
 
 <?php
-include 'additional-details-form.php'; 
+
 include 'cookie-consent.php'; 
 ?>
 <header>
       <h1><a href="/">Bits N Bytes</a></h1>
       <div class="search">
-        <form action="/search" method="POST">
-          <input
-            type="search"
-            name="search"
-            id="search"
-            placeholder="Search..."
-          />
-          <button type="submit" name="submit" id="submit"></button>
-        </form>
+        <form id="searchForm" action="/search" method="POST">
+              <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Search..."
+              />
+              <button type="submit" name="submit" id="submit"></button>
+            </form>
       </div>
       <button class='menu' id='open' onclick="
           document.getElementById('links').style='opacity:1;top:72px';
@@ -191,5 +196,4 @@ include 'cookie-consent.php';
     <a href="/privacy-policy">Privacy Policy</a>
   </div>
 </footer>
-
 </body>

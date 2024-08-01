@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = array('full_name' => '', 'country' => '', 'address' => '', 'city' => '', 'zip_code' => '', 'phone' => '');
 
-    $user_id = $_SESSION['id'];
-    $full_name = htmlspecialchars(trim($_POST["full_name"]));
-    $country = htmlspecialchars($_POST["country"]);
-    $city = htmlspecialchars($_POST["city"]);
-    $address = htmlspecialchars(trim($_POST["address"]));
-    $zip_code = htmlspecialchars(trim($_POST["zip_code"]));
-    $phone = htmlspecialchars(trim($_POST["phone"]));
+    $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+    $full_name = isset($_POST['full_name']) ? htmlspecialchars(trim($_POST['full_name'])) : '';
+    $country = isset($_POST['country']) ? htmlspecialchars($_POST['country']) : '';
+    $city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
+    $address = isset($_POST['address']) ? htmlspecialchars(trim($_POST['address'])) : '';
+    $zip_code = isset($_POST['zip_code']) ? htmlspecialchars(trim($_POST['zip_code'])) : '';
+    $phone = isset($_POST['phone']) ? htmlspecialchars(trim($_POST['phone'])) : '';
 
     // Validation
     if (empty($full_name) || !preg_match("/^[a-zA-Z\s]{2,50}$/", $full_name)) {
@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!array_filter($errors)) {
-        include 'config/db_connect.php'; // Ensure db_connect.php is included here
 
         $stmt = $conn->prepare("INSERT INTO user_details (user_id, full_name, country, address, city, zip_code, phone) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("issssss", $user_id, $full_name, $country, $address, $city, $zip_code, $phone);
@@ -58,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div id="profilePopup" style="display: none;">
     <div class="popup-content">
         <h2>Complete Your Profile</h2>
-        <form id="profileForm" onsubmit="return validateProfileForm()">
+        <form id="profileForm" action="/additional-details-form.php" onsubmit="return validateProfileForm()">
             <label for="full_name">Full Name:</label>
             <input type="text" id="full_name" name="full_name">
             <div id="error-full_name" class="error-message"></div>
@@ -113,13 +112,7 @@ let data = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname === '/profile') {
-        return;
-    }
-
-    setTimeout(() => {
-        checkUserDetails();
-    }, 10000);
+    checkUserDetails();
 });
 
 function populateCities() {
@@ -232,7 +225,7 @@ function checkUserDetails() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'incomplete') {
-                document.getElementById('profilePopup').style.display = 'flex';
+                
             }
         })
 }

@@ -8,6 +8,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
+    $_SESSION['user_status'] = 'incomplete';
     echo json_encode(['status' => 'incomplete']);
 } else {
     echo json_encode(['status' => 'complete']);

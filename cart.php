@@ -16,7 +16,9 @@ $isUserLoggedIn = isset($_SESSION['user']);
     <script src="/cart.js"></script> <!-- Include external JS file -->
 </head>
 <body>
-<?php include 'header.php';?>
+<?php include 'header.php';
+include 'additional-details-form.php';
+?>
     <aside class="filter"></aside>
     <div class="cart-view"></div>
     <div class="chd" style="display: none;">

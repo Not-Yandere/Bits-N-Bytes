@@ -201,7 +201,7 @@ function setGridTemplate(cart, screenSize) {
 
 // Function to check user details before proceeding with checkout
 function checkUserDetailsBeforeCheckout() {
-    return fetch('check-user-details.php')
+    return fetch('/check-user-details.php')
         .then(response => response.json())
         .then(data => {
             if (data.status === 'incomplete') {
